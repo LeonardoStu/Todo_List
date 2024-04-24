@@ -2,11 +2,14 @@ const express = require('express')
 
 const app = express()
 
+app.use(express.json())
+
 app.get('/', (req, res) => {
     res.send("<h1>Minha Lista de tarefas</h1>")
 })
 
 app.get('/json', (req, res) => {
+    console.log(req.body)
     res.json({name: "Tarefa-1", done: true})
 })
 
