@@ -6,10 +6,11 @@ const Checklist = require('../models/checklist')
 
 router.get('/', async(req, res) => {
     try {
-        let checklist = await Checklist.find({})
-        res.status(200).send(checklist)
+        let checklists = await Checklist.find({})
+        res.status(200).render('checklists/index', {checklists: checklists})
     } catch (err) {
         res.status(422).json(err)
+        res.status(200).render('pages/erro', {err: 'Erro ao exibir a página'})
     }
 })
 
@@ -26,9 +27,10 @@ router.post('/', async(req, res) => {
 router.get('/:id',async(req, res) => {
     try {
         let checklist = await Checklist.findById(req.params.id)
-        res.status(200).send(checklist)
+        res.status(200).render('checklists/show', {checklist: checklist})
     } catch (err) {
         res.status(422).json(err)
+        res.status(200).render('pages/erro', {err: 'Erro ao exibir a página de lista de tarefas'})
     }
 })
 
