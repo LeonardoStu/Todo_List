@@ -2,7 +2,7 @@ const express = require('express')
 
 const router = express.Router()
 
-const Checklist = require('../models/checklist')
+const Checklist = require('../models/Checklist')
 
 router.get('/', async(req, res) => {
     try {
